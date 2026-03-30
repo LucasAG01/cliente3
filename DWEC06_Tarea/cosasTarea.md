@@ -55,3 +55,7 @@ if (pincel) celda.style.backgroundColor = color;
 🗣️ FRASE RÁPIDA (por si te quedas en blanco)
 
 Creo una tabla 30x30 con createElement, selecciono un color de la paleta, hago click para activar el pincel y con el ratón voy pintando las celdas.
+
+
+
+

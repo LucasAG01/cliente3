@@ -461,7 +461,7 @@ crearBtn.addEventListener("click", function() {
 
 
 
-// QUe he aprendido del tema
+// Qué he aprendido del tema
 
 // DOM Creacion
 // createElement
@@ -484,6 +484,257 @@ crearBtn.addEventListener("click", function() {
 
 
 
-// Pisbles variantes del ejercicio de dibujar
+// Posibles variantes del ejercicio de dibujar
+/*
+    🟡 1. Variante del tablero
+
+    Te pueden cambiar cosas como:
+
+    pintar con números en vez de colores
+    contar clicks
+    borrar con botón derecho
+    hacer tablero 20x20 o dinámico
+
+*/
+
+/*
+    🟡 2. Formulario + eventos
+
+    Ejemplo:
+
+    leer input
+    validar datos
+    mostrar mensaje
+    input.value
+
+*/
+
+/*
+    🟡 3. Crear elementos dinámicos
+
+    Ejemplo:
+
+    añadir párrafos
+    crear listas
+    eliminar elementos
+    createElement
+    removeChild
+*/
+
+/*
+    🟡 4. Eventos de teclado
+
+    Ejemplo típico:
+
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+            alert("ENTER");
+        }
+    });
+*/
+
+/*
+    🟡 5. Modificar atributos
+
+    Ejemplo:
+
+    input.setAttribute("type", "password");
+
+*/
 
 
+
+//🟢 EJERCICIO 1 — Crear lista dinámica
+
+/*
+Crear un botón que al pulsarlo añada un elemento a una lista (ul).
+El texto será: "Elemento X".
+*/ 
+
+//hmtl
+/*
+    <button id="btn">Añadir</button>
+    <ul id="lista"></ul>
+*/ 
+
+let contador = 1;
+
+document.getElementById("btn").addEventListener("click", function() {
+    let li = document.createElement("li");
+    li.textContent = "Elemento " + contador;
+    
+    document.getElementById("lista").appendChild(li);
+    contador++;
+});
+
+// clave createElement + appendChild
+
+
+
+
+
+//🟢 EJERCICIO 2 — Cambiar color al hacer click
+
+/*
+Al hacer click en un div, cambiar su color.
+*/ 
+
+//<div id="caja" style="width:100px;height:100px;background:red;"></div>
+
+let caja = document.getElementById("caja");
+
+caja.addEventListener("click", function() {
+    caja.style.backgroundColor = "blue";
+});
+
+//addEventListener + style
+
+
+
+
+//🟢 EJERCICIO 3 — Validar input
+
+//Si el input está vacío, mostrar alerta.
+
+/*
+<input id="nombre">
+<button id="btn">Enviar</button>
+*/ 
+
+document.getElementById("btn").addEventListener("click", function() {
+    let valor = document.getElementById("nombre").value;
+
+    if(valor === ""){
+        alert("campo vacío");
+    }
+});
+
+
+
+
+
+//🟢 EJERCICIO 4 — Detectar tecla ENTER
+
+// Mostrar alerta cuando se pulse ENTER.
+
+document.addEventListener("keydown", function(e) {
+    if(e.key === "Enter"){
+        alert("Has pulsado ENTER");
+    }
+})
+
+
+
+
+
+//🟢 EJERCICIO 5 — Ocultar y mostrar elemento
+
+//Un botón que oculte y muestre un texto.
+
+/*
+<p id="texto">Hola mundo</p>
+<button id="btn">Mostrar/Ocultar</button>
+*/ 
+
+let visible = true;
+
+document.getElementById("btn").addEventListener("click", function() {
+    let texto = document.getElementById("texto");
+
+    if(visible) {
+        texto.style.display = "none";
+    }else{
+        texto.style.display = "block";
+    }
+    visible = !visible;
+});
+
+
+
+
+//🟢 EJERCICIO 6 — Eliminar elemento
+
+// Eliminar un elemento al hacer click.
+
+//<p id="borrar">Haz click para eliminar</p>
+
+let parrafoo = document.getElementById("borrar");
+parrafoo.addEventListener("click", function() {
+    parrafoo.remove();
+});
+
+
+
+//🟢 EJERCICIO 7 — Cambiar tipo de input
+
+// Botón para mostrar/ocultar contraseña.
+
+/*
+<input type="password" id="pass">
+<button id="btn">Ver</button>
+*/ 
+
+document.getElementById("btn").addEventListener("click", function() {
+    let input = document.getElementById("pass");
+
+    if(input.type === "password") {
+        input.type = "text";
+    }else{
+        input.type = "password";
+    }
+});
+
+
+
+
+//🟢 EJERCICIO 8 — Cambiar clase
+
+// Al hacer click, añadir clase "activo".
+// <div id="caja"></div>
+
+document.getElementById("caja").addEventListener("click", function() {
+    this.classList.add("activo");
+});
+
+
+
+
+
+//🟢 EJERCICIO 9 — Contador de clicks
+//Contar cuántas veces se pulsa un botón.
+
+/*
+<button id="btn">Click</button>
+<p id="contador">0</p>
+*/ 
+
+let count = 0;
+document.getElementById("btn").addEventListener("click", function() {
+    count++;
+    document.getElementById("contador").textContent = count;
+});
+
+
+
+
+//🟢 EJERCICIO 10 — Mini tablero (versión simple)
+
+let tabla = document.createElement("table");
+
+for (let i = 0; i < 5; i++) {
+    let fila = document.createElement("tr");
+
+    for (let j = 0; j < 5; j++) {
+        let celda = document.createElement("td");
+
+        celda.addEventListener("click", function () {
+            celda.style.backgroundColor = "black";
+        });
+
+        fila.appendChild(celda);
+    }
+
+    tabla.appendChild(fila);
+}
+
+document.body.appendChild(tabla);
