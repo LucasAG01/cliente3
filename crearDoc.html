@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin : 0;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            font-size: 30px;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Click izquierdo
+        document.addEventListener('click', function(event) {
+            crearFigura("☠️", event.pageX, event.pageY);
+        });
+
+        // Click derecho
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // Evita que se muestre el menú contextual
+            crearFigura("🧌", event.pageX, event.pageY);
+        });
+
+        function crearFigura(simbolo, x, y){
+            let figura = document.createElement('span');
+            figura.textContent = simbolo;
+            figura.className = 'figura';
+            figura.style.left = x + 'px';
+            figura.style.top = y + 'px';
+
+            document.body.appendChild(figura);
+        }
+    </script>
+    
+</body>
+</html>
