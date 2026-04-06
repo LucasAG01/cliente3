@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <title>Query + JSON</title>
+  </head>
+  <body>
+    <h2>Usuarios</h2>
+    <div id="resultado"></div>
+  </body>
+  <script>
+    $(document).ready(function () {
+
+      $.get("https://jsonplaceholder.typicode.com/users", function (datos) {
+        
+        
+        let resultado = "";
+
+        datos.forEach(function (usuario) {
+          resultado += "<p>" + usuario.name + " - " + usuario.email + "</p>";
+        });
+
+        document.getElementById("resultado").innerHTML = resultado;
+      
+    });
+
+    });
+
+  </script>
+</html>
