@@ -1,0 +1,57 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: white;
+    color: black;
+}
+
+
+header{
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+section{
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+button{
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: hsl(210, 100%, 40%);
+    color: white;
+}
+
+button:hover{
+    background-color: hsl(210, 100%, 30%);
+}
+
+.card{
+    border: 1px solid hsl(0, 0%, 80%);
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    background-color: hsl(0, 0%, 98%);
+}
+
+.mensaje{
+    margin-top: 10px;
+    font-weight: bold;
+
+}
+
+
+.error{
+    color: red;
+}
+
+.info{
+    color: green;
+}
