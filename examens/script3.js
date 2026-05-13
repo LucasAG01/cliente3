@@ -1,8 +1,9 @@
-//EMpezamos solo con variables
 let sumas = [];
 let juegoActivo = true;
 
 function generarSuma() {
+  if (!juegoActivo) return;
+
   let num1, num2, resultado;
 
   do {
@@ -14,38 +15,40 @@ function generarSuma() {
   const suma = document.createElement("div");
 
   suma.textContent = `${num1} + ${num2} = ?`;
-
   suma.className = "suma";
 
-  suma.style.left = Math.random() * window.innerWidth + "px";
+  suma.style.left = Math.random() * (window.innerWidth - 80) + "px";
   suma.style.top = "0px";
-
-  sumas.push({ elemento: suma, resultado: resultado, y: 0 });
 
   document.body.appendChild(suma);
 
-  const objetoSuma ={
+  const objetoSuma = {
     elemento: suma,
     resultado: resultado,
-    y: 0
+    y: 0,
+    intervalo: null
   };
 
-    sumas.push(objetoSuma);
+  sumas.push(objetoSuma);
 
-    // movimient
-    const intervalo = setInterval(() => {
-        objetoSuma.y +=1;
-        objetoSuma.elemento.style.top = objetoSuma.y + "px";
+  objetoSuma.intervalo = setInterval(() => {
+    objetoSuma.y += 1;
+    objetoSuma.elemento.style.top = objetoSuma.y + "px";
 
-
-        if (objetoSuma.y > window.innerHeight ) {
-            // Eliminar la suma del DOM
-            //game over
-        }
-    }, 10);
-
-
-
+    if (objetoSuma.y + objetoSuma.elemento.offsetHeight >= window.innerHeight) {
+      terminarJuego();
+    }
+  }, 10);
 }
 
+function terminarJuego() {
+  juegoActivo = false;
 
+  sumas.forEach(function(objeto) {
+    clearInterval(objeto.intervalo);
+  });
+
+  document.getElementById("gameover").style.display = "block";
+}
+
+setInterval(generarSuma, 1000);
